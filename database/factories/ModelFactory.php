@@ -19,3 +19,40 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Video::class, function(Faker\Generator $faker){
+    return [
+        'nom' => $faker->name,
+        'duree' => $faker->numberBetween(0, 10000),
+        'resume' => $faker->text(),
+        'sortie' => $faker->date()
+    ];
+});
+
+$factory->define(App\Serie::class, function(Faker\Generator $faker){
+    return [
+        'nom' => $faker->name,
+        'resume' => $faker->text(),
+        'debut' => $faker->date()
+    ];
+});
+
+$factory->define(App\Saison::class, function(Faker\Generator $faker){
+    return [
+        'numero' => $faker->numberBetween(1, 40),
+        'resume' => $faker->text(),
+        'debut' => $faker->date()
+    ];
+});
+
+$factory->define(App\Episode::class, function(Faker\Generator $faker){
+    return [
+        'numero' => $faker->numberBetween(1, 40),
+    ];
+});
+
+$factory->define(App\Film::class, function(Faker\Generator $faker){
+    return [
+
+    ];
+});
