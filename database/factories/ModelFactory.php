@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Video::class, function(Faker\Generator $faker){
     return [
-        'nom' => $faker->name,
+        'nom' => $faker->sentence(),
         'duree' => $faker->numberBetween(0, 10000),
         'resume' => $faker->text(),
         'sortie' => $faker->date()
@@ -54,5 +54,14 @@ $factory->define(App\Episode::class, function(Faker\Generator $faker){
 $factory->define(App\Film::class, function(Faker\Generator $faker){
     return [
 
+    ];
+});
+
+$factory->define(App\Personne::class, function(Faker\Generator $faker){
+    return [
+        'nom' => $faker->lastName,
+        'prenom' => $faker->firstName,
+        'dateDeNaissance' => $faker->date(),
+        'biographie' => $faker->text
     ];
 });
