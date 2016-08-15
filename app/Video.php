@@ -2,13 +2,16 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
 
+    use Sluggable;
+
     protected $fillable = [
-        'nom', 'duree', 'resume', 'sortie'
+        'nom', 'duree', 'resume', 'sortie', 'slug'
     ];
 
     protected $dates = [
@@ -29,4 +32,17 @@ class Video extends Model
         return $this->hasOne('App\Episode');
     }
 
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'nom'
+            ]
+        ];
+    }
 }
