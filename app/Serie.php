@@ -22,4 +22,18 @@ class Serie extends Model
         return $this->hasMany('App\Saison');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function realisateurs(){
+        return $this->belongsToMany('App\Personne', 'realisateur_serie', 'serie_id', 'personne_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function acteurs(){
+        return $this->belongsToMany('App\Personne', 'acteur_serie', 'serie_id', 'personne_id');
+    }
+
 }

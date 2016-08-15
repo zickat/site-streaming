@@ -18,4 +18,18 @@ class Film extends Model
         return $this->hasOne('App\Video');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function realisateurs(){
+        return $this->belongsToMany('App\Personne', 'realisateur_film', 'film_id', 'personne_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function acteurs(){
+        return $this->belongsToMany('App\Personne', 'acteur_film', 'film_id', 'personne_id');
+    }
+
 }
