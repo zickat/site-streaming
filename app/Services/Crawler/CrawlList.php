@@ -5,10 +5,10 @@ namespace App\Services\Crawler;
 
 use Goutte\Client;
 
-class CrawlList
+abstract class CrawlList
 {
 
-    private $pageLink;
+    protected $pageLink;
 
     private $linkDom;
 
@@ -54,5 +54,7 @@ class CrawlList
         }
         return null;
     }
+
+    public abstract function execute();
 
 }

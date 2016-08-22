@@ -3,13 +3,13 @@
 namespace App\Jobs;
 
 use App\Jobs\Job;
-use App\Services\Crawler\CrawlList;
+use App\Services\Crawler\CrawlFilmList;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
-class ListCrawlerQueue extends Job implements ShouldQueue
+class ListFilmCrawlerQueue extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
@@ -25,6 +25,7 @@ class ListCrawlerQueue extends Job implements ShouldQueue
         $this->url = $url;
     }
 
+
     /**
      * Execute the job.
      *
@@ -32,8 +33,10 @@ class ListCrawlerQueue extends Job implements ShouldQueue
      */
     public function handle()
     {
-        $crawler = new CrawlList($this->url, 'a.meta-title-link', '.pagination-item-holder');
+        $crawler = new CrawlFilmList($this->url);
+        $crawler->execute();
         Log::info($crawler->getLinks());
         Log::info($crawler->getNext());
     }
+
 }
