@@ -39,4 +39,20 @@ class CrawlList
         });
     }
 
+    public function getNext(){
+        $nodes = $this->request->filter($this->nextDom)->children()->filter('a, .current-item')->each(function ($node){
+            return $node->getAttribute('href');
+        });
+        $isNext = false;
+        foreach ($nodes as $node){
+            if($isNext){
+                return $node;
+            }
+            if($node == ""){
+                $isNext = true;
+            }
+        }
+        return null;
+    }
+
 }
