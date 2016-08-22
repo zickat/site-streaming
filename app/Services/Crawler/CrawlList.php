@@ -18,6 +18,8 @@ abstract class CrawlList
 
     private $request;
 
+    private static $baseUrl = 'http://www.allocine.fr';
+
     /**
      * CrawlList constructor.
      * @param $pageLink
@@ -30,7 +32,8 @@ abstract class CrawlList
         $this->linkDom = $linkDom;
         $this->nextDom = $nextDom;
         $this->client = new Client();
-        $this->request = $this->client->request('GET', $this->pageLink);
+        $url = self::$baseUrl.$this->pageLink;
+        $this->request = $this->client->request('GET', $url);
     }
 
     public function getLinks(){

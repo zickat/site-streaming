@@ -9,6 +9,8 @@
 namespace App\Services\Crawler;
 
 
+use App\Jobs\ListFilmCrawlerQueue;
+
 class CrawlFilmList extends CrawlList
 {
 
@@ -30,6 +32,9 @@ class CrawlFilmList extends CrawlList
         foreach ($links as $link){
             //Dispatch les films
         }
+        $next = $this->getNext();
+        if($next)
+            dispatch(new ListFilmCrawlerQueue($next));
     }
 
 }
