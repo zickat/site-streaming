@@ -24,7 +24,7 @@ class CrawlList
      * @param $linkDom
      * @param $nextDom
      */
-    public function __construct($pageLink, $linkDom, $nextDom)
+    public function __construct($pageLink, $linkDom = '', $nextDom = '')
     {
         $this->pageLink = $pageLink;
         $this->linkDom = $linkDom;
